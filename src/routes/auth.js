@@ -47,7 +47,6 @@ authRouter.post("/signup", async (req, res) => {
       password: passwordHash,
     });
     await user.save();
-    console.log(req.body);
     res.send("User Added Successfully");
   } catch (error) {
     res.status(500).send("Cannot signup user, " + error);
@@ -111,7 +110,6 @@ authRouter.post("/forgot-password", async (req, res) => {
 
     res.status(200).json({ message: "OTP sent to your email." });
   } catch (error) {
-    console.error("Error sending email:", error);
     res
       .status(500)
       .json({ message: "Error sending OTP. Please try again later." });
@@ -158,7 +156,6 @@ authRouter.post("/reset-password", async (req, res) => {
 
     res.status(200).json({ message: "Password reset successfully." });
   } catch (error) {
-    console.error("Error resetting password:", error);
     res
       .status(500)
       .json({

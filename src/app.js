@@ -66,16 +66,6 @@ app.patch("/user/:userId", async (req, res) => {
     res.status(500).send("Cannot update user, " + error);
   }
 });
-app.get("/feed", async (req, res) => {
-  try {
-    const found = await User.find({});
-    if (found.length === 0) res.status(404).send("No feed found");
-    else res.status(200).send(found);
-  } catch (err) {
-    console.log("Cannot find users,", err);
-    res.status(500).send("Cannot find users");
-  }
-});
 
 connectDB()
   .then(() => {
